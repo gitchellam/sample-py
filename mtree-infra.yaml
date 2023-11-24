@@ -1,0 +1,24 @@
+Parameters:
+    CBTBucketName:
+        Type: String
+        Description: S3 bucket for Create Batch Transform Manifest Lambda
+    CBTObjectKey:
+        Type: String
+        Description: S3 key for Create Batch Transform Manifest Lambda
+        Default: create_batch_transform_manifest_lambda.zip
+Resources:
+    #IngestionBucket
+    #S3 bucket
+    IngestionBucket:
+        Type: AWS::S3::Bucket
+        DeletionPolicy: Retain
+        Properties:
+            BucketName: mtree-cftbucket-hdasfkj
+            PublicAccessBlockConfiguration:
+                BlockPublicAcls: true
+                BlockPublicPolicy: true
+                IgnorePublicAcls: true
+                RestrictPublicBuckets: true
+            Tags:
+            - Key: cost-center
+              Value: arc-damage-assessment
