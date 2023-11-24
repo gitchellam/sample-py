@@ -2,11 +2,11 @@ Parameters:
     CBTBucketName:
         Type: String
         Description: S3 bucket for Create Batch Transform Manifest Lambda
-        Default: thakali-cbtbucketname
+        # Default: thakali-cbtbucketname
     CBTObjectKey:
         Type: String
         Description: S3 key for Create Batch Transform Manifest Lambda
-        Default: create_batch_transform_manifest_lambda.zip
+        # Default: create_batch_transform_manifest_lambda.zip
 Resources:
     #IngestionBucket
     #S3 bucket
