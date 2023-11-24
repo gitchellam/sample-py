@@ -10,7 +10,7 @@ Parameters:
 Resources:
     #IngestionBucket
     #S3 bucket
-    IngestionBucket:
+    IngestionBucket1:
         Type: AWS::S3::Bucket
         DeletionPolicy: Retain
         Properties:
@@ -23,7 +23,7 @@ Resources:
             Tags:
             - Key: cost-center
               Value: arc-damage-assessment
-    IngestionBucket:
+    IngestionBucket2:
         Type: AWS::S3::Bucket
         DeletionPolicy: Retain
         Properties:
