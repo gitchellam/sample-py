@@ -10,11 +10,11 @@ Parameters:
 Resources:
     #IngestionBucket
     #S3 bucket
-    IngestionBucket1:
+    IngestionBucket:
         Type: AWS::S3::Bucket
         DeletionPolicy: Retain
         Properties:
-            BucketName: mtree-cftbucket-1apple
+            BucketName: mtree-cftbucket-hdasfkj
             PublicAccessBlockConfiguration:
                 BlockPublicAcls: true
                 BlockPublicPolicy: true
@@ -23,16 +23,4 @@ Resources:
             Tags:
             - Key: cost-center
               Value: arc-damage-assessment
-    IngestionBucket2:
-        Type: AWS::S3::Bucket
-        DeletionPolicy: Retain
-        Properties:
-            BucketName: mtree-cftbucket-2apple
-            PublicAccessBlockConfiguration:
-                BlockPublicAcls: true
-                BlockPublicPolicy: true
-                IgnorePublicAcls: true
-                RestrictPublicBuckets: true
-            Tags:
-            - Key: cost-center
-              Value: arc-damage-assessment
+#commit 2 to see merge 24th Nov 12.38 PM
