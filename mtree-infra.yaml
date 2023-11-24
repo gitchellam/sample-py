@@ -23,3 +23,16 @@ Resources:
             Tags:
             - Key: cost-center
               Value: arc-damage-assessment
+    IngestionBucket:
+        Type: AWS::S3::Bucket
+        DeletionPolicy: Retain
+        Properties:
+            BucketName: mtree-cftbucket-2ladjflaj
+            PublicAccessBlockConfiguration:
+                BlockPublicAcls: true
+                BlockPublicPolicy: true
+                IgnorePublicAcls: true
+                RestrictPublicBuckets: true
+            Tags:
+            - Key: cost-center
+              Value: arc-damage-assessment
