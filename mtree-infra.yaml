@@ -6,7 +6,7 @@ Parameters:
     CBTObjectKey:
         Type: String
         Description: S3 key for Create Batch Transform Manifest Lambda
-        # Default: create_batch_transform_manifest_lambda.zip
+        # Default: billa1.zip
 Resources:
     #IngestionBucket
     #S3 bucket
@@ -24,3 +24,53 @@ Resources:
             - Key: cost-center
               Value: arc-damage-assessment
 #commit 2 to see merge 24th Nov 12.38 PM
+    CreateBatchTransformManifestLamServiceRole:
+        Type: AWS::IAM::Role
+        Properties:
+            AssumeRolePolicyDocument:
+                Statement:
+                - Action: sts:AssumeRole
+                  Effect: Allow
+                  Principal:
+                      Service: lambda.amazonaws.com
+                Version: 2012-10-17
+            Policies:
+            - PolicyName: allow_lam_cloudwatch_log_write
+              PolicyDocument:
+                  Version: 2012-10-17
+                  Statement:
+                  - Effect: Allow
+                    Action: logs:CreateLogGroup
+                    Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:*
+                  - Effect: Allow
+                    Action: 
+                    - logs:CreateLogStream
+                    - logs:PutLogEvents
+                    Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/*
+            # - PolicyName: allow_lam_access_ingestion_bucket
+            #   PolicyDocument:
+            #       Version: 2012-10-17
+            #       Statement:
+            #       - Effect: Allow
+            #         Action: s3:*
+            #         Resource: 
+            #         - !Sub arn:aws:s3:::${IngestionBucketName}
+            #         - !Sub arn:aws:s3:::${IngestionBucketName}/*
+            Tags:
+            - Key: cost-center
+              Value: arc-damage-assessment
+    CreateBatchTransformManifestLambda:
+        Type: AWS::Lambda::Function
+        Properties:
+            Code:
+                S3Bucket: !Ref CBTBucketName
+                S3Key: !Ref CBTObjectKey
+                #S3Bucket: !Ref SourceBucketName
+                #S3Key: create_batch_transform_manifest_lambda.zip
+            Handler: eval-addr.lambda_handler
+            Role: !GetAtt CreateBatchTransformManifestLamServiceRole.Arn
+            Runtime: python3.8
+            Timeout: 120
+            Tags:
+            - Key: cost-center
+              Value: arc-damage-assessment
