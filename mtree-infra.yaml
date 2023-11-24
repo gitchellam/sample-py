@@ -14,7 +14,7 @@ Resources:
         Type: AWS::S3::Bucket
         DeletionPolicy: Retain
         Properties:
-            BucketName: mtree-cftbucket-hdasfkj
+            BucketName: mtree-cftbucket-1apple
             PublicAccessBlockConfiguration:
                 BlockPublicAcls: true
                 BlockPublicPolicy: true
@@ -27,7 +27,7 @@ Resources:
         Type: AWS::S3::Bucket
         DeletionPolicy: Retain
         Properties:
-            BucketName: mtree-cftbucket-2ladjflaj
+            BucketName: mtree-cftbucket-2apple
             PublicAccessBlockConfiguration:
                 BlockPublicAcls: true
                 BlockPublicPolicy: true
